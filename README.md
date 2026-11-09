@@ -16,7 +16,7 @@ Experiment code, configurations, and measured results. The written report
 - `run_experiments.sh` - runs the baseline, 7 cache/TLB variations, and the
   tuned combination; collects metrics into `results.csv`
 - `results.csv` - metrics for all 11 gem5 runs
-- `raw-stats-all-runs.txt` - raw gem5 `stats.txt` output for every run
+- `stats/` - raw gem5 `stats.txt` output for every run (one `<run>.stats.txt` file per configuration)
 - `tlb_fs.c` + `native_run.sh` - native Linux page-size / page-fault
   experiment (base 4 KiB vs huge pages via madvise; faults from getrusage;
   actual backing proven from /proc/self/smaps AnonHugePages)
