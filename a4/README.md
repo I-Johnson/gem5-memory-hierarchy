@@ -26,6 +26,7 @@ All 46 simulations were run on gem5 v26.0.0.0 (x86, SE mode, `gem5.opt`) in the
 | `runs/<name>/` | Raw gem5 output per run: `stats.txt`, `config.ini`, `console.log`, `latency.json` |
 | `gem5-patch/` | `StaticNotTakenBP` - the static "no prediction" baseline added to gem5 (see Troubleshooting 5) |
 | `pilot/` | The earlier 5-gate pilot (smoke tests) and its logs |
+| `screenshots/` | Report figures A1-A14: terminal captures of the real command output (environment, config, Hello World, pipeline traces, stats, SMT, errors). `term_shot.py` + `spec.json` re-run the commands and redraw them |
 
 ## Machine configuration
 

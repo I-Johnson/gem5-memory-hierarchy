@@ -1,0 +1,173 @@
+[
+ {
+  "file": "A01_environment.png",
+  "title": "Terminal - gem5 v26 Docker environment",
+  "steps": [
+   {
+    "cmd": "docker ps",
+    "max": 45,
+    "host_output": "CONTAINER ID   IMAGE                                              STATUS        NAMES\n9c69c3bde160   ghcr.io/gem5/ubuntu-24.04_all-dependencies:v26-0   Up 17 hours   gracious_galois",
+    "prompt": "johnsonsubedi@JohnsonSubedis-MacBook-Pro-2:~/gem5-assignment %"
+   },
+   {
+    "cmd": "grep -A3 \"gem5 version\" runs/minor_hello/console.log",
+    "max": 45
+   }
+  ]
+ },
+ {
+  "file": "A02a_config_ilp_exp_py.png",
+  "steps": [
+   {
+    "cmd": "cat -n ilp_exp.py | sed -n '1,62p'",
+    "max": 70
+   }
+  ]
+ },
+ {
+  "file": "A02b_config_ilp_exp_py.png",
+  "steps": [
+   {
+    "cmd": "cat -n ilp_exp.py | sed -n '63,130p'",
+    "max": 70
+   }
+  ]
+ },
+ {
+  "file": "A03_static_predictor.png",
+  "steps": [
+   {
+    "cmd": "cat /gem5/src/cpu/pred/static_nt.hh",
+    "max": 60
+   },
+   {
+    "cmd": "tail -3 /gem5/build-staticbp.log",
+    "max": 45
+   }
+  ]
+ },
+ {
+  "file": "A04_hello_world_minor.png",
+  "steps": [
+   {
+    "cmd": "/gem5/build/X86/gem5.opt --outdir=/tmp/hw ilp_exp.py --cpu minor --bin bench/hello",
+    "max": 30
+   }
+  ]
+ },
+ {
+  "file": "A05_minor_cycle_trace.png",
+  "steps": [
+   {
+    "cmd": "head -40 results/pipeview/minor_int_work_50cycles.txt",
+    "max": 40
+   }
+  ]
+ },
+ {
+  "file": "A06_o3_pipeview.png",
+  "steps": [
+   {
+    "cmd": "head -42 results/pipeview/o3w4_tournament_int_work.color.txt",
+    "max": 42
+   }
+  ]
+ },
+ {
+  "file": "A07_throughput_stats.png",
+  "steps": [
+   {
+    "cmd": "grep -E \"^(simInsts|simSeconds|system.cpu.numCycles|system.cpu.ipc|system.cpu.cpi) \" runs/minor_int_work/stats.txt",
+    "max": 45
+   },
+   {
+    "cmd": "grep -E \"^(simInsts|system.cpu.numCycles|system.cpu.ipc) \" runs/o3w8_tournament_fp_work/stats.txt",
+    "max": 45
+   }
+  ]
+ },
+ {
+  "file": "A08_latency_measurement.png",
+  "steps": [
+   {
+    "cmd": "cat runs/minor_mem_work/latency.json",
+    "max": 45
+   },
+   {
+    "cmd": "cat runs/o3w4_tournament_int_work/latency.json",
+    "max": 45
+   }
+  ]
+ },
+ {
+  "file": "A09_branch_prediction_stats.png",
+  "steps": [
+   {
+    "cmd": "grep -E \"condPredicted |condPredictedTaken|condIncorrect|system.cpu.ipc |squashedInstsIssued\" runs/o3w4_none_int_work/stats.txt runs/o3w4_tournament_int_work/stats.txt",
+    "max": 45
+   }
+  ]
+ },
+ {
+  "file": "A10_pipeview_mispredict_squash.png",
+  "steps": [
+   {
+    "cmd": "head -42 results/pipeview/o3w4_none_branch_rand.color.txt",
+    "max": 42
+   }
+  ]
+ },
+ {
+  "file": "A11_experiment_sweep.png",
+  "steps": [
+   {
+    "cmd": "grep -E \"^(==>|done |lat |====)\" sweep3.log | head -44",
+    "max": 45
+   }
+  ]
+ },
+ {
+  "file": "A12_smt_stats.png",
+  "steps": [
+   {
+    "cmd": "grep -E \"commitStats[01].(numInsts|ipc) |system.cpu.ipc |system.cpu.numCycles |ROBFullEvents|SQFullEvents|IQFullEvents\" \"runs/smt_w4_mem_work+mem_work/stats.txt\" \"runs/smt_w4_int_work+int_work/stats.txt\"",
+    "max": 45
+   }
+  ]
+ },
+ {
+  "file": "A13_results_tables.png",
+  "steps": [
+   {
+    "cmd": "sed -n '/^## C/,$p' results/summary.md",
+    "max": 40
+   }
+  ]
+ },
+ {
+  "file": "A14a_troubleshooting_logs.png",
+  "steps": [
+   {
+    "cmd": "cat /gem5/a4_pilot/gate1_failed_before_fix.log",
+    "max": 45
+   },
+   {
+    "cmd": "grep FAIL sweep.log",
+    "max": 45
+   }
+  ]
+ },
+ {
+  "file": "A14b_troubleshooting_reproduced.png",
+  "steps": [
+   {
+    "cmd": "sed '/ComSize = 10/d' ilp_exp.py > /tmp/no_comsize.py && /gem5/build/X86/gem5.opt --outdir=/tmp/e1 /tmp/no_comsize.py --cpu o3 --width 1 --bin bench/int_work 2>&1 | grep -E -m2 'panic|Panic'",
+    "max": 45
+   },
+   {
+    "cmd": "sed '/multi_thread = True/d' ilp_exp.py > /tmp/no_mt.py && /gem5/build/X86/gem5.opt --outdir=/tmp/e2 /tmp/no_mt.py --cpu o3 --bin bench/hello --bin2 bench/hello 2>&1 | grep -m1 Assertion",
+    "max": 45
+   }
+  ]
+ }
+]
