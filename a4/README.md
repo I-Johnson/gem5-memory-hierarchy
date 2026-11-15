@@ -26,7 +26,7 @@ All 46 simulations were run on gem5 v26.0.0.0 (x86, SE mode, `gem5.opt`) in the
 | `runs/<name>/` | Raw gem5 output per run: `stats.txt`, `config.ini`, `console.log`, `latency.json` |
 | `gem5-patch/` | `StaticNotTakenBP` - the static "no prediction" baseline added to gem5 (see Troubleshooting 5) |
 | `pilot/` | The earlier 5-gate pilot (smoke tests) and its logs |
-| `screenshots/` | Report figures A1-A14: terminal captures of the real command output (environment, config, Hello World, pipeline traces, stats, SMT, errors). `term_shot.py` + `spec.json` re-run the commands and redraw them |
+| `screenshots/` | Report figures A1-A14: terminal images rendered from command output by `term_shot.py` (commands in `spec.json`; the host prompt and `docker ps` output in A01 were supplied as text). `caption_charts.py` adds the APA figure labels to the charts in `results/` |
 
 ## Machine configuration
 
@@ -70,7 +70,7 @@ Full tables are in [`results/summary.md`](results/summary.md).
 - **2 memory-bound threads finish 1.72x faster** than running them one after the other, because one thread's DRAM stalls are hidden by the other.
 - **`branch_rand` + `int` gives 1.46x.**
 - **SMT slowed some workload pairs** (int+int 0.61x, int+fp 0.65x). Branch mispredictions rose sharply, but the cause of the slowdown was not isolated. In int+int, conditional mispredictions rose from 806 with `int_work` alone to 2,013,842 for the pair, while ROB-full and IQ-full events stayed rare (3,082 and 4,763).
-- **int+mem is 0.81x**: the memory thread fills the store queue (16M SQ-full events) and starves the integer thread.
+- **int+mem is 0.81x**: store-queue-full (16.0M) and ROB-full (6.27M) events were frequent, and per-thread completed instructions per total cycle were 0.194 and 0.055. The cause of the slowdown was not isolated.
 
 ## Troubleshooting log
 
@@ -86,8 +86,8 @@ Problems hit while bringing the experiments up on gem5 v26, and how each was res
    - Fix: search only files that exist.
 4. **SMT abort: `Assertion 'system->multiThread || numThreads == 1' failed`.**
    - Fix: set `system.multi_thread = True` when the core has 2 threads.
-5. **gem5 has no static branch predictor**, which the "without prediction" comparison needs.
-   - On x86, MinorCPU makes **zero** predictor lookups: Fetch2 sees macro-ops before Decode splits them into micro-ops. The in-order pipeline therefore effectively runs with no prediction, and the with/without comparison was done on O3.
+5. **No built-in static branch predictor was found in the version checked**, which the "without prediction" comparison needs.
+   - On x86, MinorCPU makes **zero** predictor lookups, likely because Fetch2 sees macro-ops before Decode splits them into micro-ops. The in-order pipeline therefore effectively runs with no prediction, and the with/without comparison was done on O3.
    - First attempt: a 1-entry BTB with no RAS. This still produced 1.86M BTB hits, so it was not a real "no prediction" baseline.
    - Fix: added `StaticNotTakenBP` to gem5 (`gem5-patch/`), a conditional predictor that always predicts not-taken and never learns, then rebuilt `gem5.opt`. Verified: `condPredictedTaken = 0`.
 6. **Width-1 O3 panic: `TimeBuffer out-of-bounds access! Wire index 6 is outside valid range [-5, +5]`.**
@@ -119,4 +119,4 @@ The sweep takes about 25 minutes on 8 parallel jobs. Runs that already have a `s
 
 - **Throughput:** IPC is committed x86 instructions divided by cycles (`system.cpu.ipc`). One x86 instruction can become several internal micro-ops, which are not counted separately. For SMT runs it is also reported per thread (`commitStats0/1.ipc`).
 - **Latency:** the average number of cycles from fetch to commit (MinorCPU) or fetch to retire (O3) per committed instruction. It is measured over a 20,000-cycle window in the middle of each run; squashed instructions are excluded.
-- **Mispredict rate:** `branchPred.condIncorrect / branchPred.condPredicted`.
+- **Mispredict rate:** `branchPred.condIncorrect / branchPred.condPredicted`. `condPredicted` includes lookups made on the wrong path after a misprediction.

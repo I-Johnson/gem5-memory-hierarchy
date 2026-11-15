@@ -120,8 +120,8 @@ viz_o3() {  # name width bp bin  (200 cycles from the middle of that run)
         --debug-file=trace.txt "$A4/ilp_exp.py" --cpu o3 --width $2 --bp $3 \
         --bin "$A4/bench/$4" --maxtick $(( m + 100000 )) > "$VIZ/$1.console.log" 2>&1
   # -c 500 = ticks per cycle at 2 GHz
-  python3 /gem5/util/o3-pipeview.py -c 500 -w 100 -o "$VIZ/$1.txt" "$VIZ/$1/trace.txt"
-  python3 /gem5/util/o3-pipeview.py -c 500 -w 100 --color -o "$VIZ/$1.color.txt" "$VIZ/$1/trace.txt"
+  python3 /gem5/util/o3-pipeview.py -c 500 -w 40 -o "$VIZ/$1.txt" "$VIZ/$1/trace.txt"
+  python3 /gem5/util/o3-pipeview.py -c 500 -w 40 --color -o "$VIZ/$1.color.txt" "$VIZ/$1/trace.txt"
   rm -rf "$VIZ/$1"
 }
 viz_o3 o3w4_tournament_int_work 4 tournament int_work

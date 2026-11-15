@@ -16,8 +16,12 @@ from PIL import Image, ImageDraw, ImageFont
 
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 FONT_B = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf"
+CAP_B = "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"
+CAP_I = "/usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf"
+CAP_SIZE, CAP_LH = 24, 32
 SIZE, LH, PAD, BAR = 15, 20, 18, 34
-MAXCOL = 185
+MAXCOL = 112   # wrap width: keeps text >= 7pt when the image spans a page
+MAXLINES = 47  # taller captures are split into parts so none breaks across a page
 BG, FG = (30, 30, 30), (220, 220, 220)
 PROMPT_USER, PROMPT_PATH = (110, 200, 110), (110, 160, 240)
 ANSI = {30: (60, 60, 60), 31: (230, 90, 90), 32: (110, 200, 110),
@@ -52,18 +56,21 @@ def visible_len(line):
     return len(SGR.sub("", line))
 
 
-def clip(line):
-    """Clip to MAXCOL visible characters, keeping colour codes."""
-    if visible_len(line) <= MAXCOL:
-        return line
-    out, n = [], 0
-    for text, col, bold in segments(line):
-        take = text[: max(0, MAXCOL - 1 - n)]
-        out.append((take, col, bold))
-        n += len(take)
-        if n >= MAXCOL - 1:
-            break
-    return out + [("…", FG, False)]
+def wrap(segs):
+    """Soft-wrap a list of (text, colour, bold) runs at MAXCOL columns.
+    Continuation lines are indented 2 spaces; no characters are dropped."""
+    out, cur, n = [], [], 0
+    for text, col, bold in segs:
+        while text:
+            room = MAXCOL - n
+            take, text = text[:room], text[room:]
+            cur.append((take, col, bold))
+            n += len(take)
+            if n >= MAXCOL and text:
+                out.append(cur)
+                cur, n = [("  ", FG, False)], 2
+    out.append(cur)
+    return out
 
 
 def run(cmd):
@@ -77,8 +84,8 @@ def build_lines(shot):
     for st in shot["steps"]:
         prompt = st.get("prompt", "root@9c69c3bde160:/gem5/a4#")
         user, _, path = prompt.partition(":")
-        lines.append([(user, PROMPT_USER, True), (":" + path, PROMPT_PATH, True),
-                      (" " + st["cmd"], FG, False)])
+        lines += wrap([(user, PROMPT_USER, True), (":" + path, PROMPT_PATH, True),
+                       (" " + st["cmd"], FG, False)])
         text = st["host_output"] if "host_output" in st else run(st["cmd"])
         text = OTHER_ESC.sub("", text.replace("\t", "    "))
         body = text.split("\n") if text else []
@@ -87,23 +94,41 @@ def build_lines(shot):
             more = len(body) - mx
             body = body[:mx] + [f"\x1b[90m... ({more} more lines)\x1b[0m"]
         for b in body:
-            c = clip(b)
-            lines.append(c if isinstance(c, list) else segments(c))
+            lines += wrap(segments(b))
     return lines
 
 
-def render(shot, path):
-    lines = build_lines(shot)
+def caption_band(width, label, title):
+    """APA-style figure label (bold) and title (italic) above the image, on
+    white, so the label can never land on a different page from its figure."""
+    fb, fi = ImageFont.truetype(CAP_B, CAP_SIZE), ImageFont.truetype(CAP_I, CAP_SIZE)
+    rows = [(label, fb)]
+    words, cur = (title or "").split(), ""
+    for w in words:
+        t = (cur + " " + w).strip()
+        if fi.getlength(t) > width and cur:
+            rows.append((cur, fi)); cur = w
+        else:
+            cur = t
+    if cur:
+        rows.append((cur, fi))
+    band = Image.new("RGB", (width, len(rows) * CAP_LH + 14), "white")
+    d = ImageDraw.Draw(band)
+    for i, (t, font) in enumerate(rows):
+        d.text((0, i * CAP_LH), t, font=font, fill=(20, 20, 20))
+    return band
+
+
+def draw(lines, title, path, label=None, caption=None):
     f, fb = ImageFont.truetype(FONT, SIZE), ImageFont.truetype(FONT_B, SIZE)
     cw = f.getlength("M")
-    width = int(max([sum(len(t) for t, _, _ in l) for l in lines] + [90]) * cw) + 2 * PAD
+    width = int(MAXCOL * cw) + 2 * PAD          # same width for every capture
     height = BAR + PAD + len(lines) * LH + PAD
     img = Image.new("RGB", (width, height), BG)
     d = ImageDraw.Draw(img)
     d.rectangle([0, 0, width, BAR], fill=(52, 52, 56))
     for i, c in enumerate([(237, 106, 94), (245, 191, 79), (98, 197, 84)]):
         d.ellipse([14 + i * 22, 11, 26 + i * 22, 23], fill=c)
-    title = shot.get("title", "root@9c69c3bde160: /gem5/a4 - gem5 v26 container")
     d.text(((width - f.getlength(title)) / 2, 8), title, font=f, fill=(190, 190, 190))
     y = BAR + PAD
     for l in lines:
@@ -113,11 +138,33 @@ def render(shot, path):
                 d.text((x, y), text, font=fb if bold else f, fill=col)
                 x += len(text) * cw
         y += LH
+    if label:
+        band = caption_band(width, label, caption)
+        full = Image.new("RGB", (width, band.height + img.height), "white")
+        full.paste(band, (0, 0)); full.paste(img, (0, band.height))
+        img = full
     img.save(path)
+
+
+def render(shot, outdir):
+    """Write one PNG, or name_p1.png, name_p2.png ... when taller than MAXLINES."""
+    lines = build_lines(shot)
+    title = shot.get("title", "root@9c69c3bde160: /gem5/a4 - gem5 v26 container")
+    parts = [lines[i:i + MAXLINES] for i in range(0, len(lines), MAXLINES)]
+    stem = shot["file"][:-4]
+    names = []
+    for k, part in enumerate(parts, 1):
+        name = shot["file"] if len(parts) == 1 else f"{stem}_p{k}.png"
+        t = title if len(parts) == 1 else f"{title} ({k}/{len(parts)})"
+        label = shot.get("label")
+        if label and k > 1:
+            label = f"{label} (continued)"
+        draw(part, t, f"{outdir}/{name}", label, shot.get("caption") if k == 1 else None)
+        names.append(name)
+    return names
 
 
 if __name__ == "__main__":
     spec, outdir = json.load(open(sys.argv[1])), sys.argv[2]
     for shot in spec:
-        render(shot, f"{outdir}/{shot['file']}")
-        print("wrote", shot["file"])
+        print("wrote", ", ".join(render(shot, outdir)))
