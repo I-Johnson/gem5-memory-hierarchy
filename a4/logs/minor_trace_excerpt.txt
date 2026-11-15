@@ -1,0 +1,300 @@
+  73000: system.cpu.fetch2: MinorInst: id=0/1.1/1/1 addr=0x4017b0 inst="(invalid)" class=No_OpClass flags="IsMacroop"
+  73000: system.cpu.fetch2: MinorInst: id=0/1.1/1/2 addr=0x4017b4 inst="(invalid)" class=No_OpClass flags="IsMacroop"
+  73000: global: MinorTrace: state=FetchRunning icacheState=IcacheRunning in_tlb_mem=0/1 streamSeqNum=1 lines=-
+  73000: global: MinorTrace: lines=
+  73000: global: MinorTrace: lines=0/1.1/2
+  73000: global: MinorTrace: lines=-,0/1.1/1
+  73000: global: MinorTrace: prediction=-,-
+  73000: global: MinorTrace: inputIndex=48 havePC=1 predictionSeqNum=1 insts=(0/1.1/1/1,0/1.1/1/2)
+  73000: global: MinorTrace: lines=0/1.1/1,R
+  73000: global: MinorTrace: insts=(0/1.1/1/1,0/1.1/1/2),-
+  73000: global: MinorTrace: insts=-
+  73000: global: MinorTrace: insts=R,,
+  73000: global: MinorTrace: insts=-,-
+  73000: global: MinorTrace: state=MemoryRunning in_tlb_mem=0/0 stores_in_transfers=0 lastMemBarrier=0
+  73000: global: MinorTrace: addr=
+  73000: global: MinorTrace: addr=,
+  73000: global: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
+  73000: global: MinorTrace: insts=,,,,,,
+  73000: global: MinorTrace: busy=
+  73000: global: MinorTrace: insts=- inputIndex=0 streamSeqNum=1 stalled=E,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
+  73000: global: MinorTrace: insts=-,-,-
+  73000: global: MinorTrace: insts=-,-,-
+  73000: global: MinorTrace: insts=-,-,-
+  73000: global: MinorTrace: insts=-,-,-,-,-,-,-,-,-
+  73000: global: MinorTrace: insts=-,-,-,-,-,-
+  73000: global: MinorTrace: insts=-,-,-
+  73000: global: MinorTrace: insts=-
+  73000: global: MinorTrace: insts=-
+  73000: global: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  73000: global: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  73000: global: MinorTrace: branch=-,-
+  73000: global: MinorTrace: activity=4 stages=E,1,1,E,E
+  73500: system.cpu.fetch2: MinorInst: id=0/1.1/1/3 addr=0x4017b6 inst="(invalid)" class=No_OpClass flags="IsMacroop"
+  73500: system.cpu.fetch2: MinorInst: id=0/1.1/1/4 addr=0x4017b9 inst="(invalid)" class=No_OpClass flags="IsMacroop"
+  73500: global: MinorTrace: state=FetchRunning icacheState=IcacheRunning in_tlb_mem=0/1 streamSeqNum=1 lines=B
+  73500: global: MinorTrace: lines=
+  73500: global: MinorTrace: lines=0/1.1/2
+  73500: global: MinorTrace: lines=-,-
+  73500: global: MinorTrace: prediction=-,-
+  73500: global: MinorTrace: inputIndex=56 havePC=1 predictionSeqNum=1 insts=(0/1.1/1/3,0/1.1/1/4)
+  73500: global: MinorTrace: lines=0/1.1/1,R
+  73500: global: MinorTrace: insts=(0/1.1/1/3,0/1.1/1/4),(0/1.1/1/1,0/1.1/1/2)
+  73500: global: MinorTrace: insts=(0/1.1/1/1.1,0/1.1/1/2.2)
+  73500: global: MinorTrace: insts=R,,
+  73500: global: MinorTrace: insts=(0/1.1/1/1.1,0/1.1/1/2.2),-
+  73500: global: MinorTrace: state=MemoryRunning in_tlb_mem=0/0 stores_in_transfers=0 lastMemBarrier=0
+  73500: global: MinorTrace: addr=
+  73500: global: MinorTrace: addr=,
+  73500: global: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
+  73500: global: MinorTrace: insts=R,,,,,,
+  73500: global: MinorTrace: busy=
+  73500: global: MinorTrace: insts=- inputIndex=0 streamSeqNum=1 stalled=E,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
+  73500: global: MinorTrace: insts=-,-,-
+  73500: global: MinorTrace: insts=-,-,-
+  73500: global: MinorTrace: insts=-,-,-
+  73500: global: MinorTrace: insts=-,-,-,-,-,-,-,-,-
+  73500: global: MinorTrace: insts=-,-,-,-,-,-
+  73500: global: MinorTrace: insts=-,-,-
+  73500: global: MinorTrace: insts=-
+  73500: global: MinorTrace: insts=-
+  73500: global: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  73500: global: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  73500: global: MinorTrace: branch=-,-
+  73500: global: MinorTrace: activity=3 stages=E,E,1,E,E
+  74000: system.cpu.execute: Attempting to issue [tid:0]
+  74000: system.cpu.execute: Trying to issue inst: 0/1.1/1/1.1 pc: 0x4017b0 (fault) to FU: 0
+  74000: system.cpu.execute: Issuing 0/1.1/1/1.1 to 9
+  74000: system.cpu.execute: MinorInst: id=0/1.1/1/1.1 addr=0x4017b0 inst="(invalid)" class=No_OpClass flags="IsMicroop IsLastMicroop IsFirstMicroop" srcRegs= destRegs= extMachInst=                                                                                                                                                               0
+  74000: system.cpu.execute: Stepping to next inst inputIndex: 1
+  74000: system.cpu.execute: Trying to issue inst: 0/1.1/1/2.2 pc: 0x4017b4 (xor) to FU: 0
+  74000: system.cpu.execute: Issuing inst: 0/1.1/1/2.2 pc: 0x4017b4 (xor) into FU 0
+  74000: system.cpu.execute: MinorInst: id=0/1.1/1/2.2 addr=0x4017b4 inst="  XOR_R_R : xor   ebp, ebp, ebp" class=IntAlu flags="IsInteger IsMicroop IsLastMicroop IsFirstMicroop" srcRegs=r5,r5,z,z,z,z,z destRegs=r5,c0,c1,z,z,z extMachInst=                                                                                                                                                               0
+  74000: system.cpu.execute: Reached inst issue limit
+  74000: system.cpu.execute: Stepping to next inst inputIndex: 2
+  74000: system.cpu.execute: Wrapping
+  74000: system.cpu.fetch2: MinorInst: id=0/1.1/1/5 addr=0x4017ba inst="(invalid)" class=No_OpClass flags="IsMacroop"
+  74000: global: MinorTrace: state=FetchRunning icacheState=IcacheRunning in_tlb_mem=0/1 streamSeqNum=1 lines=-
+  74000: global: MinorTrace: lines=
+  74000: global: MinorTrace: lines=0/1.1/2
+  74000: global: MinorTrace: lines=-,-
+  74000: global: MinorTrace: prediction=-,-
+  74000: global: MinorTrace: inputIndex=0 havePC=1 predictionSeqNum=1 insts=(0/1.1/1/5,-)
+  74000: global: MinorTrace: lines=R,
+  74000: global: MinorTrace: insts=(0/1.1/1/5,-),(0/1.1/1/3,0/1.1/1/4)
+  74000: global: MinorTrace: insts=(0/1.1/1/3.3,0/1.1/1/4.4)
+  74000: global: MinorTrace: insts=(0/1.1/1/3,0/1.1/1/4),R,
+  74000: global: MinorTrace: insts=(0/1.1/1/3.3,0/1.1/1/4.4),(0/1.1/1/1.1,0/1.1/1/2.2)
+  74000: global: MinorTrace: state=MemoryRunning in_tlb_mem=0/0 stores_in_transfers=0 lastMemBarrier=0
+  74000: global: MinorTrace: addr=
+  74000: global: MinorTrace: addr=,
+  74000: global: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
+  74000: global: MinorTrace: insts=R,,,,,,
+  74000: global: MinorTrace: busy=(5,1/0/151/2),(87,1/0/151/2),(88,1/0/151/2)
+  74000: global: MinorTrace: insts=- inputIndex=0 streamSeqNum=1 stalled=E,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
+  74000: global: MinorTrace: insts=0/1.1/1/2.2,-,-
+  74000: global: MinorTrace: insts=-,-,-
+  74000: global: MinorTrace: insts=-,-,-
+  74000: global: MinorTrace: insts=-,-,-,-,-,-,-,-,-
+  74000: global: MinorTrace: insts=-,-,-,-,-,-
+  74000: global: MinorTrace: insts=-,-,-
+  74000: global: MinorTrace: insts=-
+  74000: global: MinorTrace: insts=-
+  74000: global: MinorTrace: insts=0/1.1/1/1.1,0/1.1/1/2.2,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  74000: global: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  74000: global: MinorTrace: branch=-,-
+  74000: global: MinorTrace: activity=4 stages=E,E,E,1,1
+  74500: system.cpu.execute: Attempting to commit [tid:0]
+  74500: system.cpu.execute: Committing micro-ops for interrupt[tid:0]
+  74500: system.cpu.execute: Trying to commit canCommitInsts: 1
+  74500: system.cpu.execute: Committing no cost inst: 0/1.1/1/1.1 pc: 0x4017b0 (fault)  74500: global: ExecContext setting PC: (0x4017b0=>0x4017b4).(0=>1)
+  74500: system.cpu.execute: Committing inst: 0/1.1/1/1.1 pc: 0x4017b0 (fault)
+  74500: system.cpu.execute: Completed inst: 0/1.1/1/1.1 pc: 0x4017b0 (fault)
+  74500: system.cpu.execute: Trying to commit canCommitInsts: 1
+  74500: system.cpu.execute: Trying to commit from FUs
+  74500: system.cpu.execute: Attempting to issue [tid:0]
+  74500: system.cpu.execute: Trying to issue inst: 0/1.1/1/3.3 pc: 0x4017b6 (mov) to FU: 0
+  74500: system.cpu.execute: Issuing inst: 0/1.1/1/3.3 pc: 0x4017b6 (mov) into FU 0
+  74500: system.cpu.execute: MinorInst: id=0/1.1/1/3.3 addr=0x4017b6 inst="  MOV_R_R : mov   r9, r9, rdx" class=IntAlu flags="IsInteger IsMicroop IsLastMicroop IsFirstMicroop" srcRegs=z,r2,z destRegs=r9 extMachInst=                                                                                                                                                               0
+  74500: system.cpu.execute: Stepping to next inst inputIndex: 1
+  74500: system.cpu.execute: Trying to issue inst: 0/1.1/1/4.4 pc: 0x4017b9 (ld) to FU: 0
+  74500: system.cpu.execute: Can't issue as FU: 0 isn't capable
+  74500: system.cpu.execute: Trying to issue inst: 0/1.1/1/4.4 pc: 0x4017b9 (ld) to FU: 1
+  74500: system.cpu.execute: Can't issue as FU: 1 isn't capable
+  74500: system.cpu.execute: Trying to issue inst: 0/1.1/1/4.4 pc: 0x4017b9 (ld) to FU: 2
+  74500: system.cpu.execute: Can't issue as FU: 2 isn't capable
+  74500: system.cpu.execute: Trying to issue inst: 0/1.1/1/4.4 pc: 0x4017b9 (ld) to FU: 3
+  74500: system.cpu.execute: Can't issue as FU: 3 isn't capable
+  74500: system.cpu.execute: Trying to issue inst: 0/1.1/1/4.4 pc: 0x4017b9 (ld) to FU: 4
+  74500: system.cpu.execute: Can't issue as FU: 4 isn't capable
+  74500: system.cpu.execute: Trying to issue inst: 0/1.1/1/4.4 pc: 0x4017b9 (ld) to FU: 5
+  74500: system.cpu.execute: Can't issue as FU: 5 isn't capable
+  74500: system.cpu.execute: Trying to issue inst: 0/1.1/1/4.4 pc: 0x4017b9 (ld) to FU: 6
+  74500: system.cpu.execute: Issuing inst: 0/1.1/1/4.4 pc: 0x4017b9 (ld) into FU 6
+  74500: system.cpu.execute: Memory ref inst: 0/1.1/1/4.4 pc: 0x4017b9 (ld) must wait for inst 0(exec) before issuing
+  74500: system.cpu.execute: Pushing mem inst: 0/1.1/1/4.4 pc: 0x4017b9 (ld)
+  74500: system.cpu.execute: MinorInst: id=0/1.1/1/4.4 addr=0x4017b9 inst="  POP_R : ld   t1, SS:[t0 + rsp]" class=MemRead flags="IsInteger IsLoad IsMicroop IsDelayedCommit IsFirstMicroop" srcRegs=z,r4,m154(miscellaneous[154]) destRegs=r17 extMachInst=                                                                                                                                                               0
+  74500: system.cpu.execute: Reached inst issue limit
+  74500: system.cpu.execute: Stepping to next inst inputIndex: 2
+  74500: system.cpu.execute: Wrapping
+  74500: global: MinorTrace: state=FetchRunning icacheState=IcacheRunning in_tlb_mem=0/1 streamSeqNum=1 lines=-
+  74500: global: MinorTrace: lines=
+  74500: global: MinorTrace: lines=0/1.1/2
+  74500: global: MinorTrace: lines=-,-
+  74500: global: MinorTrace: prediction=-,-
+  74500: global: MinorTrace: inputIndex=0 havePC=1 predictionSeqNum=1 insts=-
+  74500: global: MinorTrace: lines=R,
+  74500: global: MinorTrace: insts=-,(0/1.1/1/5,-)
+  74500: global: MinorTrace: insts=(0/1.1/1/4.5,0/1.1/1/4.6)
+  74500: global: MinorTrace: insts=(0/1.1/1/5,-),,
+  74500: global: MinorTrace: insts=(0/1.1/1/4.5,0/1.1/1/4.6),(0/1.1/1/3.3,0/1.1/1/4.4)
+  74500: global: MinorTrace: state=MemoryRunning in_tlb_mem=0/0 stores_in_transfers=0 lastMemBarrier=0
+  74500: global: MinorTrace: addr=
+  74500: global: MinorTrace: addr=,
+  74500: global: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
+  74500: global: MinorTrace: insts=R,,,,,,
+  74500: global: MinorTrace: busy=(5,1/0/151/2),(9,1/0/152/3),(17,1/0/152/4),(87,1/0/151/2),(88,1/0/151/2)
+  74500: global: MinorTrace: insts=- inputIndex=0 streamSeqNum=1 stalled=E,E,E,E,E,E,1,E drainState=NotDraining isInbetweenInsts=1
+  74500: global: MinorTrace: insts=0/1.1/1/3.3,0/1.1/1/2.2,-
+  74500: global: MinorTrace: insts=-,-,-
+  74500: global: MinorTrace: insts=-,-,-
+  74500: global: MinorTrace: insts=-,-,-,-,-,-,-,-,-
+  74500: global: MinorTrace: insts=-,-,-,-,-,-
+  74500: global: MinorTrace: insts=-,-,-
+  74500: global: MinorTrace: insts=0/1.1/1/4.4
+  74500: global: MinorTrace: insts=-
+  74500: global: MinorTrace: insts=0/1.1/1/2.2,0/1.1/1/3.3,0/1.1/1/4.4,,,,,,,,,,,,,,,,,,,,,,,,,,
+  74500: global: MinorTrace: insts=0/1.1/1/4.4,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  74500: global: MinorTrace: branch=-,-
+  74500: global: MinorTrace: activity=4 stages=E,E,E,1,1
+  75000: system.cpu.execute: Attempting to commit [tid:0]
+  75000: system.cpu.execute: Committing micro-ops for interrupt[tid:0]
+  75000: system.cpu.execute: Trying to commit canCommitInsts: 1
+  75000: system.cpu.execute: Trying to commit from mem FUs
+  75000: system.cpu.execute: Issuing mem ref early inst: 0/1.1/1/4.4 pc: 0x4017b9 (ld) instToWaitFor: 0
+  75000: global: ExecContext setting PC: (0x4017b9=>0x4017ba).(0=>1)
+  75000: system.cpu.execute: Initiating memRef inst: 0/1.1/1/4.4 pc: 0x4017b9 (ld)
+  75000: system.cpu.execute: Unstalling 6 for inst 0/1.1/1/4.4
+  75000: system.cpu.execute: Trying to commit canCommitInsts: 1
+  75000: system.cpu.execute: Trying to commit from FUs
+  75000: system.cpu.execute: Attempting to issue [tid:0]
+  75000: system.cpu.execute: Trying to issue inst: 0/1.1/1/4.5 pc: 0x4017b9 (addi) to FU: 0
+  75000: system.cpu.execute: Issuing inst: 0/1.1/1/4.5 pc: 0x4017b9 (addi) into FU 0
+  75000: system.cpu.execute: MinorInst: id=0/1.1/1/4.5 addr=0x4017b9 inst="  POP_R : addi   rsp, rsp, 0x8" class=IntAlu flags="IsInteger IsMicroop IsDelayedCommit" srcRegs=r4 destRegs=r4 extMachInst=                                                                                                                                                               0
+  75000: system.cpu.execute: Stepping to next inst inputIndex: 1
+  75000: system.cpu.execute: Trying to issue inst: 0/1.1/1/4.6 pc: 0x4017b9 (mov) to FU: 0
+  75000: system.cpu.execute: Can't issue as FU: 0 is already busy
+  75000: system.cpu.execute: Trying to issue inst: 0/1.1/1/4.6 pc: 0x4017b9 (mov) to FU: 1
+  75000: system.cpu.execute: Issuing inst: 0/1.1/1/4.6 pc: 0x4017b9 (mov) into FU 1
+  75000: system.cpu.execute: MinorInst: id=0/1.1/1/4.6 addr=0x4017b9 inst="  POP_R : mov   rsi, rsi, t1" class=IntAlu flags="IsInteger IsMicroop IsLastMicroop" srcRegs=z,r17,z destRegs=r6 extMachInst=                                                                                                                                                               0
+  75000: system.cpu.execute: Reached inst issue limit
+  75000: system.cpu.execute: Stepping to next inst inputIndex: 2
+  75000: system.cpu.execute: Wrapping
+  75000: global: MinorTrace: state=FetchRunning icacheState=IcacheRunning in_tlb_mem=0/1 streamSeqNum=1 lines=-
+  75000: global: MinorTrace: lines=
+  75000: global: MinorTrace: lines=0/1.1/2
+  75000: global: MinorTrace: lines=-,-
+  75000: global: MinorTrace: prediction=-,-
+  75000: global: MinorTrace: inputIndex=0 havePC=1 predictionSeqNum=1 insts=-
+  75000: global: MinorTrace: lines=R,
+  75000: global: MinorTrace: insts=-,-
+  75000: global: MinorTrace: insts=(0/1.1/1/5.7,-)
+  75000: global: MinorTrace: insts=,,
+  75000: global: MinorTrace: insts=(0/1.1/1/5.7,-),(0/1.1/1/4.5,0/1.1/1/4.6)
+  75000: global: MinorTrace: state=MemoryRunning in_tlb_mem=0/1 stores_in_transfers=0 lastMemBarrier=0
+  75000: global: MinorTrace: addr=
+  75000: global: MinorTrace: addr=R;0/1.1/1/4.4;4,
+  75000: global: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
+  75000: global: MinorTrace: insts=R,,,,,,
+  75000: global: MinorTrace: busy=(4,1/0/153/5),(5,1/0/151/2),(6,1/0/153/6),(9,1/0/152/3),(17,1/0/152/4),(87,1/0/151/2),(88,1/0/151/2)
+  75000: global: MinorTrace: insts=- inputIndex=0 streamSeqNum=1 stalled=1,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
+  75000: global: MinorTrace: insts=0/1.1/1/4.5,0/1.1/1/3.3,0/1.1/1/2.2
+  75000: global: MinorTrace: insts=0/1.1/1/4.6,-,-
+  75000: global: MinorTrace: insts=-,-,-
+  75000: global: MinorTrace: insts=-,-,-,-,-,-,-,-,-
+  75000: global: MinorTrace: insts=-,-,-,-,-,-
+  75000: global: MinorTrace: insts=-,-,-
+  75000: global: MinorTrace: insts=-
+  75000: global: MinorTrace: insts=-
+  75000: global: MinorTrace: insts=0/1.1/1/2.2,0/1.1/1/3.3,0/1.1/1/4.4,0/1.1/1/4.5,0/1.1/1/4.6,,,,,,,,,,,,,,,,,,,,,,,,
+  75000: global: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  75000: global: MinorTrace: branch=-,-
+  75000: global: MinorTrace: activity=3 stages=E,E,E,E,1
+  75500: system.cpu.execute: Attempting to commit [tid:0]
+  75500: system.cpu.execute: Committing micro-ops for interrupt[tid:0]
+  75500: system.cpu.execute: Trying to commit canCommitInsts: 1
+  75500: system.cpu.execute: Trying to commit from FUs
+  75500: global: ExecContext setting PC: (0x4017b4=>0x4017b6).(0=>1)
+  75500: system.cpu.execute: Committing inst: 0/1.1/1/2.2 pc: 0x4017b4 (xor)
+  75500: system.cpu.execute: Unstalling 0 for inst 0/1.1/1/2.2
+  75500: system.cpu.execute: Completed inst: 0/1.1/1/2.2 pc: 0x4017b4 (xor)
+  75500: system.cpu.execute: Trying to commit canCommitInsts: 1
+  75500: system.cpu.execute: Trying to commit from FUs
+  75500: system.cpu.execute: Attempting to issue [tid:0]
+  75500: system.cpu.execute: Trying to issue inst: 0/1.1/1/5.7 pc: 0x4017ba (mov) to FU: 0
+  75500: system.cpu.execute: Issuing inst: 0/1.1/1/5.7 pc: 0x4017ba (mov) into FU 0
+  75500: system.cpu.execute: MinorInst: id=0/1.1/1/5.7 addr=0x4017ba inst="  MOV_R_R : mov   rdx, rdx, rsp" class=IntAlu flags="IsInteger IsMicroop IsLastMicroop IsFirstMicroop" srcRegs=z,r4,z destRegs=r2 extMachInst=                                                                                                                                                               0
+  75500: system.cpu.execute: Stepping to next inst inputIndex: 1
+  75500: system.cpu.execute: Stepping to next inst inputIndex: 2
+  75500: system.cpu.execute: Wrapping
+  75500: global: MinorTrace: state=FetchRunning icacheState=IcacheRunning in_tlb_mem=0/1 streamSeqNum=1 lines=-
+  75500: global: MinorTrace: lines=
+  75500: global: MinorTrace: lines=0/1.1/2
+  75500: global: MinorTrace: lines=-,-
+  75500: global: MinorTrace: prediction=-,-
+  75500: global: MinorTrace: inputIndex=0 havePC=1 predictionSeqNum=1 insts=-
+  75500: global: MinorTrace: lines=R,
+  75500: global: MinorTrace: insts=-,-
+  75500: global: MinorTrace: insts=-
+  75500: global: MinorTrace: insts=,,
+  75500: global: MinorTrace: insts=-,(0/1.1/1/5.7,-)
+  75500: global: MinorTrace: state=MemoryRunning in_tlb_mem=0/1 stores_in_transfers=0 lastMemBarrier=0
+  75500: global: MinorTrace: addr=
+  75500: global: MinorTrace: addr=R;0/1.1/1/4.4;4,
+  75500: global: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
+  75500: global: MinorTrace: insts=,,,,,,
+  75500: global: MinorTrace: busy=(2,1/0/154/7),(4,1/0/153/5),(6,1/0/153/6),(9,1/0/152/3),(17,1/0/152/4)
+  75500: global: MinorTrace: insts=(0/1.1/1/2.2,-) inputIndex=0 streamSeqNum=1 stalled=1,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
+  75500: global: MinorTrace: insts=0/1.1/1/5.7,0/1.1/1/4.5,0/1.1/1/3.3
+  75500: global: MinorTrace: insts=-,0/1.1/1/4.6,-
+  75500: global: MinorTrace: insts=-,-,-
+  75500: global: MinorTrace: insts=-,-,-,-,-,-,-,-,-
+  75500: global: MinorTrace: insts=-,-,-,-,-,-
+  75500: global: MinorTrace: insts=-,-,-
+  75500: global: MinorTrace: insts=-
+  75500: global: MinorTrace: insts=-
+  75500: global: MinorTrace: insts=0/1.1/1/3.3,0/1.1/1/4.4,0/1.1/1/4.5,0/1.1/1/4.6,0/1.1/1/5.7,,,,,,,,,,,,,,,,,,,,,,,,
+  75500: global: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  75500: global: MinorTrace: branch=-,-
+  75500: global: MinorTrace: activity=3 stages=E,E,E,E,1
+  76000: system.cpu.execute: Attempting to commit [tid:0]
+  76000: system.cpu.execute: Committing micro-ops for interrupt[tid:0]
+  76000: system.cpu.execute: Trying to commit canCommitInsts: 1
+  76000: system.cpu.execute: Trying to commit from FUs
+  76000: global: ExecContext setting PC: (0x4017b6=>0x4017b9).(0=>1)
+  76000: system.cpu.execute: Committing inst: 0/1.1/1/3.3 pc: 0x4017b6 (mov)
+  76000: system.cpu.execute: Unstalling 0 for inst 0/1.1/1/3.3
+  76000: system.cpu.execute: Completed inst: 0/1.1/1/3.3 pc: 0x4017b6 (mov)
+  76000: system.cpu.execute: Trying to commit canCommitInsts: 1
+  76000: global: MinorTrace: state=FetchRunning icacheState=IcacheRunning in_tlb_mem=0/1 streamSeqNum=1 lines=-
+  76000: global: MinorTrace: lines=
+  76000: global: MinorTrace: lines=0/1.1/2
+  76000: global: MinorTrace: lines=-,-
+  76000: global: MinorTrace: prediction=-,-
+  76000: global: MinorTrace: inputIndex=0 havePC=1 predictionSeqNum=1 insts=-
+  76000: global: MinorTrace: lines=R,
+  76000: global: MinorTrace: insts=-,-
+  76000: global: MinorTrace: insts=-
+  76000: global: MinorTrace: insts=,,
+  76000: global: MinorTrace: insts=-,-
+  76000: global: MinorTrace: state=MemoryRunning in_tlb_mem=0/1 stores_in_transfers=0 lastMemBarrier=0
+  76000: global: MinorTrace: addr=
+  76000: global: MinorTrace: addr=R;0/1.1/1/4.4;4,
+  76000: global: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
+  76000: global: MinorTrace: insts=,,,,,,
+  76000: global: MinorTrace: busy=(2,1/0/154/7),(4,1/0/153/5),(6,1/0/153/6),(17,1/0/152/4)
+  76000: global: MinorTrace: insts=(0/1.1/1/3.3,-) inputIndex=0 streamSeqNum=1 stalled=1,1,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
+  76000: global: MinorTrace: insts=-,0/1.1/1/5.7,0/1.1/1/4.5
+  76000: global: MinorTrace: insts=-,-,0/1.1/1/4.6
+  76000: global: MinorTrace: insts=-,-,-
+  76000: global: MinorTrace: insts=-,-,-,-,-,-,-,-,-

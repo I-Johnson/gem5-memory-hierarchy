@@ -1,0 +1,37 @@
+==> Writing gem5 config (ilp_exp.py)
+==> Writing pilot workloads (tiny, bounded)
+==> Cross-compiling (static x86-64)
+    compile OK
+
+==> GATE 1: config smoke - hello under MinorCPU (caches, interrupts, walker ports)
+Hello World! gem5 x86 smoke test OK
+    GATE 1 PASS: MinorCPU hello ran and printed
+
+==> GATE 2: O3CPU config path (width/branch-predictor params)
+Hello World! gem5 x86 smoke test OK
+    GATE 2 PASS: O3CPU hello ran and printed
+
+==> GATE 3: SMT wiring - two threads on one O3 core (hello + hello)
+    GATE 3 PASS: SMT ran both threads to completion
+
+==> GATE 4: timing pilot - int_work (2M iterations) under O3, wall + simulated time
+    wall time: 38 s
+simSeconds                                   0.006080                       # Number of seconds simulated (Second)
+simTicks                                   6079608500                       # Number of ticks simulated (Tick)
+simInsts                                     18132425                       # Number of instructions simulated (Count)
+system.cpu.numCycles                         12159218                       # Number of cpu cycles simulated (Cycle)
+system.cpu.ipc                               1.491249                       # IPC: instructions per cycle (core level) ((Count/Cycle))
+    GATE 4 PASS
+
+==> GATE 5: trace format validation + fetch-to-commit latency (hello, 2M ticks)
+    trace lines: 66690
+    sample commit lines (for format validation):
+  74500: system.cpu.execute: Committing inst: 0/1.1/1/1.1 pc: 0x4017b0 (fault)
+  75500: system.cpu.execute: Committing inst: 0/1.1/1/2.2 pc: 0x4017b4 (xor)
+  76000: system.cpu.execute: Committing inst: 0/1.1/1/3.3 pc: 0x4017b6 (mov)
+    committed instructions measured: 196 (squashed excluded: 479)
+    avg fetch-to-commit latency: 15.3 cycles, min 0, max 239
+    GATE 5 PASS
+
+==== PILOT COMPLETE - all 5 gates passed ====
+Full log: tee this run into a4_pilot/pilot_run.log for the report.

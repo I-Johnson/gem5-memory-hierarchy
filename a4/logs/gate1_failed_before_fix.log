@@ -1,0 +1,15 @@
+warn: Base 10 memory/cache size 2GB will be cast to base 2 size 2GiB.
+TypeError: 'module' object is not callable
+
+At:
+  /gem5/a4_pilot/ilp_exp.py(22): <module>
+  src/python/m5/main.py(687): main
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 26.0.0.0
+gem5 compiled Oct 25 2026 20:23:56
+gem5 started Nov 15 2026 01:12:48
+gem5 executing on 9c69c3bde160, pid 404
+command line: /gem5/build/X86/gem5.opt --outdir=/gem5/a4_pilot/out_hello_minor /gem5/a4_pilot/ilp_exp.py --cpu minor --bin /gem5/a4_pilot/hello
+
