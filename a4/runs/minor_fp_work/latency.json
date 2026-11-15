@@ -1,0 +1,21 @@
+{
+ "fetch_to_commit": {
+  "n": 7448,
+  "mean": 30.0,
+  "median": 28.0,
+  "p90": 46.0,
+  "min": 10.0,
+  "max": 47.0
+ },
+ "fetch2_to_commit": {
+  "n": 7448,
+  "mean": 23.79,
+  "median": 23.0,
+  "p90": 36.0,
+  "min": 10.0,
+  "max": 36.0
+ },
+ "squashed_in_window": 7457,
+ "window_start_tick": 6490999000,
+ "window_end_tick": 6500999000
+}

@@ -1,0 +1,21 @@
+{
+ "fetch_to_retire": {
+  "n": 2064,
+  "mean": 412.48,
+  "median": 415.0,
+  "p90": 600.0,
+  "min": 187.0,
+  "max": 911.0
+ },
+ "stage_avg_cycles": {
+  "fetch->decode": 327.66,
+  "decode->rename": 1.0,
+  "rename->dispatch": 19.16,
+  "dispatch->issue": 13.5,
+  "issue->complete": 1.12,
+  "complete->retire": 50.03
+ },
+ "squashed_in_window": 0,
+ "window_start_tick": 11910351000,
+ "window_end_tick": 11920351000
+}

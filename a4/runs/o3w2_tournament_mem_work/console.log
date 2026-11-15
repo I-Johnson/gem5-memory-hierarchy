@@ -1,0 +1,25 @@
+Global frequency set at 1000000000000 ticks per second
+src/mem/dram_interface.cc:691: warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (2048 Mbytes)
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/base/stats/storage.hh:278: warn: Bucket size (4) does not divide range [1:32] into equal-sized buckets. Rounding up.
+src/base/stats/storage.hh:278: warn: Bucket size (4) does not divide range [1:8] into equal-sized buckets. Rounding up.
+src/base/remote_gdb.cc:418: warn: Sockets disabled, not accepting gdb connections
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 26.0.0.0
+gem5 compiled Nov 15 2026 01:46:36
+gem5 started Nov 15 2026 02:02:54
+gem5 executing on 9c69c3bde160, pid 5409
+command line: /gem5/build/X86/gem5.opt --outdir=/gem5/a4/runs/o3w2_tournament_mem_work /gem5/a4/ilp_exp.py --cpu o3 --width 2 --bp tournament --bin /gem5/a4/bench/mem_work
+
+info: Standard input is not a terminal, disabling listeners.
+src/sim/syscall_emul.cc:86: warn: ignoring syscall set_robust_list(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall rseq(...)
+src/sim/mem_state.cc:443: info: Increasing stack size by one page.
+src/sim/syscall_emul.hh:1123: warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/gem5/a4/bench/mem_work'
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+mem_work done: 13352945159510126080
+Exiting @ tick 24387183000 because exiting with last active thread context
+wall_seconds=42

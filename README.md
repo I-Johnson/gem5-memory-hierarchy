@@ -7,7 +7,8 @@ Experiment code, configurations, and measured results. The written report
 (analysis, graphs, discussion) is submitted through the course LMS.
 
 > **Assignment 4 (Instruction-Level Parallelism)** lives in [`a4/`](a4/) -
-> see [`a4/README.md`](a4/README.md). Everything else in this repo is Assignment 3.
+> see [`a4/README.md`](a4/README.md) for the gem5 experiments, results and
+> charts. Everything else in this repo is Assignment 3.
 
 ## Contents
 
