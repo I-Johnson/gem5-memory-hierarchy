@@ -69,7 +69,7 @@ Full tables are in [`results/summary.md`](results/summary.md).
 **SMT (W=4).** The result depends on the mix:
 - **2 memory-bound threads finish 1.72x faster** than running them one after the other, because one thread's DRAM stalls are hidden by the other.
 - **`branch_rand` + `int` gives 1.46x.**
-- **Compute-bound pairs are slower**: int+int is 0.61x and int+fp is 0.65x. Partitioning halves each thread's ROB and IQ, and 2.45M ROB-full events show the contention.
+- **SMT slowed some workload pairs** (int+int 0.61x, int+fp 0.65x). Branch mispredictions rose sharply, but the cause of the slowdown was not isolated. In int+int, conditional mispredictions rose from 806 with `int_work` alone to 2,013,842 for the pair, while ROB-full and IQ-full events stayed rare (3,082 and 4,763).
 - **int+mem is 0.81x**: the memory thread fills the store queue (16M SQ-full events) and starves the integer thread.
 
 ## Troubleshooting log
@@ -117,6 +117,6 @@ The sweep takes about 25 minutes on 8 parallel jobs. Runs that already have a `s
 
 ## Metric definitions
 
-- **Throughput:** IPC = committed instructions / cycles (`system.cpu.ipc`). For SMT runs it is also reported per thread (`commitStats0/1.ipc`).
+- **Throughput:** IPC is committed x86 instructions divided by cycles (`system.cpu.ipc`). One x86 instruction can become several internal micro-ops, which are not counted separately. For SMT runs it is also reported per thread (`commitStats0/1.ipc`).
 - **Latency:** the average number of cycles from fetch to commit (MinorCPU) or fetch to retire (O3) per committed instruction. It is measured over a 20,000-cycle window in the middle of each run; squashed instructions are excluded.
 - **Mispredict rate:** `branchPred.condIncorrect / branchPred.condPredicted`.
